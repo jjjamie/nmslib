@@ -118,6 +118,8 @@ class BuildExt(build_ext):
         # /arch:[IA32|SSE|SSE2|AVX|AVX2|ARMv7VE|VFPv4]
         # See https://docs.microsoft.com/en-us/cpp/build/reference/arch-x86
         c_opts['msvc'].append("/arch:{}".format(os.environ['ARCH']))  # bugfix
+    else:
+        c_opts['msvc'].append("/arch:AVX2")
     no_arch_flag=True
     if 'CFLAGS' in os.environ: 
       for flag in arch_list: 
